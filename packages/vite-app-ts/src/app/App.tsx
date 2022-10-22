@@ -51,21 +51,17 @@ const context: IEthComponentsSettings = {
 const App: FC = () => {
   console.log('loading app...');
   return (
-    <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <ApolloProvider client={client}>
-        <EthComponentsSettingsContext.Provider value={context}>
-          <EthersAppContext>
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <ThemeSwitcherProvider themeMap={themes} defaultTheme={savedTheme || 'light'}>
-                <Suspense fallback={<div />}>
-                  <MainPage />
-                </Suspense>
-              </ThemeSwitcherProvider>
-            </ErrorBoundary>
-          </EthersAppContext>
-        </EthComponentsSettingsContext.Provider>
-      </ApolloProvider>
-    </ErrorBoundary>
+    <ApolloProvider client={client}>
+      <EthComponentsSettingsContext.Provider value={context}>
+        <EthersAppContext>
+          <ThemeSwitcherProvider themeMap={themes} defaultTheme={savedTheme || 'light'}>
+            <Suspense fallback={<div />}>
+              <MainPage />
+            </Suspense>
+          </ThemeSwitcherProvider>
+        </EthersAppContext>
+      </EthComponentsSettingsContext.Provider>
+    </ApolloProvider>
   );
 };
 

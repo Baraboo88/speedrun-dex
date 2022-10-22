@@ -8,7 +8,7 @@ import { Signer, utils } from 'ethers';
 import '@typechain/hardhat';
 import '@nomiclabs/hardhat-waffle';
 import '@nomiclabs/hardhat-ethers';
-import '@tenderly/hardhat-tenderly';
+//import '@tenderly/hardhat-tenderly';
 import 'hardhat-deploy';
 // not required as we are using @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers
 
@@ -36,7 +36,7 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 //
 // Select the network you want to deploy to here:
 //
-const defaultNetwork = 'localhost';
+const defaultNetwork = 'goerli';
 
 const getMnemonic = () => {
   try {
@@ -65,6 +65,7 @@ const config: HardhatUserConfig = {
   networks: {
     localhost: {
       url: 'http://localhost:8545',
+      gasPrice: 145595430600,
       /*
         if there is no mnemonic, it will just use account 0 of the hardhat node to deploy
         (you can put in a mnemonic here to set the deployer locally)
@@ -98,7 +99,7 @@ const config: HardhatUserConfig = {
       },
     },
     goerli: {
-      url: 'https://goerli.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad', // <---- YOUR INFURA ID! (or it won't work)
+      url: 'https://eth-goerli.g.alchemy.com/v2/p9r38IsErr-6P0j8WCSc-FO7x8SWNtqC', // <---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: getMnemonic(),
       },
